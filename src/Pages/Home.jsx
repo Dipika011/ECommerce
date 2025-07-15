@@ -1,12 +1,13 @@
-import React, {useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SimpleSlider from './SimpleSlider'
 import { authContext } from '../Context/AuthContext'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
   const [apiData, setApiData] = useState([])
 
-  const {addToCart} =  useContext(authContext)
+  const { addToCart } = useContext(authContext)
 
   const apifetch = async () => {
     const res = await fetch('https://dummyjson.com/products?limit=0')
@@ -15,7 +16,7 @@ const Home = () => {
     setApiData(data.products)
   }
 
-  const handleCart=(data)=>{
+  const handleCart = (data) => {
     addToCart(data)
   }
 
@@ -24,7 +25,7 @@ const Home = () => {
   }, [])
   return (
     <>
-    <SimpleSlider/>
+      <SimpleSlider />
       <div className=' grid lg:grid-cols-4 m-10 gap-5'>
         {
           apiData.map((ele, i) => (
@@ -37,12 +38,12 @@ const Home = () => {
 
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$ {ele.price}</h5>
                 <div className=' flex gap-10'>
-                  <button onClick={()=>handleCart(ele)} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button onClick={() => handleCart(ele)} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Add To Cart
                   </button>
-                  <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <Link className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     View Details
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

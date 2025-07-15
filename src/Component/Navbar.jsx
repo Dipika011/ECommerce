@@ -74,7 +74,7 @@ const Navbar = () => {
                 user ?
                   <li>
                     <Link to={'/cart'}>
-                      <span className=' bi bi-cart4 text-white'> ({cart.length})</span>
+                      <span className=' bi bi-cart4 text-black'> ({cart.length})</span>
                     </Link>
                   </li> :
                   ''
