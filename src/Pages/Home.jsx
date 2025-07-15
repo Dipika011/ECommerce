@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import SimpleSlider from './SimpleSlider'
-import { authContext } from '../context/AuthContext'
+import { authContext } from '../Context/AuthContext'
 
 const Home = () => {
 
   const [apiData, setApiData] = useState([])
 
-  const {addToCart} = useContext(authContext)
+  const {addToCart} =  useContext(authContext)
 
   const apifetch = async () => {
     const res = await fetch('https://dummyjson.com/products?limit=0')
